@@ -5,4 +5,4 @@ const router = express.Router();
 router.get('/:id', getUserSettings);
 router.put('/:id', updateUserSettings);
 
-module.exports = router;
+export default router;
