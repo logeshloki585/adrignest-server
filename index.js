@@ -23,11 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/settings', settingsRoutes);
 
-app.use((err, req, res, next) => {
-    res.status(500).json({ error: err.message });
-});
-
-app.get((req, res) => {
+app.get('/', (req, res) => {
     res.status(200).json({ message: 'You dont have access to this!!!' });
 })
 
