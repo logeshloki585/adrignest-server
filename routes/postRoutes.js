@@ -4,7 +4,8 @@ import {
     getPosts,
     getPostById,
     updatePost,
-    deletePost
+    deletePost,
+    getPostsByApiKey
 } from '../controllers/postController.js';
 
 const router = express.Router();
@@ -18,5 +19,7 @@ router.get('/:id', getPostById);
 router.put('/:id', updatePost);
 
 router.delete('/:id', deletePost);
+
+router.get('/keys/:apiKey', getPostsByApiKey);
 
 export default router;

@@ -5,6 +5,7 @@ import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
 import postRoutes from './routes/postRoutes.js';
 import settingsRoutes from './routes/settingsRoute.js';
+import apiKeyRoutes from './routes/apiKeyRoutes.js';
 import connectDB from './utils/connectDB.js';
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/settings', settingsRoutes);
+app.use('/api/apikey', apiKeyRoutes);
 
 app.get('/', (req, res) => {
     res.status(200).json({ message: 'You dont have access to this!!!' });
