@@ -14,7 +14,7 @@ dotenv.config();
 connectDB();
 
 app.use(cors({
-    origin: ['http://localhost:3000','http://localhost:5173'],
+    origin: ['http://localhost:3000','http://localhost:5173','https://adrignest-server.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
