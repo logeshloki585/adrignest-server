@@ -1,35 +1,41 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import authRoutes from './routes/authRoutes.js';
-import postRoutes from './routes/postRoutes.js';
-import settingsRoutes from './routes/settingsRoute.js';
-import apiKeyRoutes from './routes/apiKeyRoutes.js';
-import connectDB from './utils/connectDB.js';
+import express from "express";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import cors from "cors";
+import authRoutes from "./routes/authRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
+import settingsRoutes from "./routes/settingsRoute.js";
+import apiKeyRoutes from "./routes/apiKeyRoutes.js";
+import connectDB from "./utils/connectDB.js";
 
 const app = express();
 dotenv.config();
 
 connectDB();
 
-app.use(cors({
-    origin: ['http://localhost:3000','http://localhost:5173','https://adrig-nest-client.vercel.app'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "https://adrig-nest.vercel.app/",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 
-app.use('/api/auth', authRoutes);
-app.use('/api/posts', postRoutes);
-app.use('/api/settings', settingsRoutes);
-app.use('/api/apikey', apiKeyRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/settings", settingsRoutes);
+app.use("/api/apikey", apiKeyRoutes);
 
-app.get('/', (req, res) => {
-    res.status(200).json({ message: 'You dont have access to this!!!' });
-})
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "You dont have access to this!!!" });
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
